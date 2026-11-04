@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/projectplan-logo.png" alt="ProjectPlan logo" width="520">
+  <img src="public/logo.png" alt="ProjectPlan logo" width="520">
 
   <h1>ProjectPlan</h1>
   <p><strong>Plan projects. Track progress. Preserve the knowledge.</strong></p>
