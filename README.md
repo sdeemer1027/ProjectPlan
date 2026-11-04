@@ -1,58 +1,181 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
+  <img src="public/projectplan-logo.png" alt="ProjectPlan logo" width="520">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+  <h1>ProjectPlan</h1>
+  <p><strong>Plan projects. Track progress. Preserve the knowledge.</strong></p>
+</div>
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+ProjectPlan is a Laravel-based project planning and documentation platform for organizing the lifecycle of websites and applications. Each project will have a structured storyboard, project outline, phases, milestones, tasks and subtasks, requirements, technical documentation, development history, and future ideas—all stored in the database so plans and decisions remain available as work continues over time. The system is intended to serve as the central planning workspace for Laravel projects maintained in GitHub, helping the team resume work confidently, understand how each site is designed, and avoid losing important implementation details.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## System Requirements
 
-## Learning Laravel
+| Component | Requirement |
+|---|---|
+| PHP | 8.3.28 or compatible PHP 8.3 release |
+| Laravel | 13.x |
+| Database | MySQL |
+| Composer | Current compatible release |
+| Node.js | LTS release compatible with the project's Vite setup |
+| npm | Included with Node.js |
+| Front-end | Tailwind CSS, Vite |
+| Source control | Git and a GitHub repository |
+| Web server | Apache or Nginx for production; Laravel's development server for local development |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> These are the baseline requirements. Exact package versions are defined by `composer.lock` and `package-lock.json` in the repository.
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Installation Guide
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+### 1. Clone the GitHub repository
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+Replace the repository URL below with the actual ProjectPlan GitHub URL.
 
 ```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
+git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+cd YOUR-REPOSITORY
 ```
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+### 2. Install PHP dependencies
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 3. Configure the environment
 
-## Code of Conduct
+```bash
+copy .env.example .env
+php artisan key:generate
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Open `.env` and configure the database connection:
 
-## Security Vulnerabilities
+```dotenv
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=projectplan
+DB_USERNAME=your_database_user
+DB_PASSWORD=your_database_password
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Create the `projectplan` database in MySQL before continuing.
 
-## License
+### 4. Run database migrations
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```bash
+php artisan migrate
+```
+
+If the repository includes seeders for initial roles, permissions, or development data, run the documented seeding command for those seeders.
+
+### 5. Install and build front-end assets
+
+```bash
+npm install
+npm run build
+```
+
+During development, use:
+
+```bash
+npm run dev
+```
+
+### 6. Start the Laravel development server
+
+```bash
+php artisan serve
+```
+
+Open the local URL shown in the terminal, usually:
+
+```text
+http://127.0.0.1:8000
+```
+
+## Branding Guide
+
+ProjectPlan's visual identity is based on the logo's blue-to-purple gradient, with green for completed or successful actions and warm yellow for folders and planning elements.
+
+### Brand colors
+
+| Name | Hex | Intended use |
+|---|---|---|
+| Project Blue | `#1456B8` | Primary buttons, links, active navigation |
+| Deep Navy | `#102B59` | Headings, dark text, strong contrast |
+| Plan Purple | `#7026D9` | Secondary brand accent, highlights |
+| Bright Blue | `#0EA5E9` | Focus states, informational accents |
+| Success Green | `#22C55E` | Completed tasks, success indicators |
+| Folder Amber | `#F59E0B` | Planning/folder accents, warnings |
+| Surface | `#F8FAFC` | Main light background |
+| Border Gray | `#E2E8F0` | Table borders, card outlines |
+| Body Text | `#1E293B` | Standard text |
+| Muted Text | `#64748B` | Secondary labels and descriptions |
+
+Use the blue and purple gradient sparingly for prominent brand moments, such as the dashboard welcome panel or primary brand accent. Keep most application surfaces neutral for readability.
+
+### Typography
+
+| Use | Font | Suggested weight |
+|---|---|---|
+| Page titles and headings | Inter | 600–700 |
+| Body text and forms | Inter | 400–500 |
+| Buttons and navigation | Inter | 500–600 |
+| Code, paths, technical details | JetBrains Mono | 400–500 |
+
+Use a practical system fallback stack if the fonts are not bundled:
+
+```css
+font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+             "Segoe UI", sans-serif;
+```
+
+### Buttons
+
+| Button type | Appearance | Use |
+|---|---|---|
+| Primary | Project Blue background, white text | Create, Save, Submit |
+| Secondary | White/surface background, blue text and border | Cancel, Back, View |
+| Accent | Plan Purple background, white text | Special actions or key project workflows |
+| Success | Success Green background, white text | Mark complete, approve |
+| Danger | Red background, white text | Delete or destructive actions |
+| Disabled | Muted background and text | Unavailable actions |
+
+Buttons should have consistent height, padding, rounded corners, hover states, visible keyboard focus, and clear labels. Destructive actions should be visually distinct and require confirmation when appropriate.
+
+### Tables and layouts
+
+- Use clean, responsive tables with clear column headings and subtle row dividers.
+- Keep table headers visually distinct using a light neutral surface and medium-weight text.
+- Use compact status badges for project, phase, and task statuses.
+- Align dates and numeric values consistently.
+- On small screens, allow horizontal scrolling or switch to a stacked card layout.
+- Use consistent spacing, card borders, and rounded corners across dashboards and forms.
+- Maintain accessible contrast and do not rely on color alone to communicate status.
+
+### Logo usage
+
+- Main logo file: `public/projectplan-logo.png`
+- Use the logo on the login screen, application branding area, README, and project documentation.
+- Preserve its transparent background and aspect ratio.
+- Do not stretch, recolor, crop, or place it on a background that reduces legibility.
+- For compact navigation or favicon use, create a separate icon-only variant rather than shrinking the full wordmark until it becomes unreadable.
+
+## Repository and Project Documentation
+
+GitHub is the source-control home for ProjectPlan's application code and project documentation.
+
+- Keep this `README.md` at the repository root.
+- Keep the main logo at `public/projectplan-logo.png`.
+- Commit migrations, seeders, application code, and documented setup changes.
+- Keep `.env` and credentials out of GitHub; commit `.env.example` with safe placeholders.
+- Use GitHub issues or the ProjectPlan task system to track planned work and defects.
+- Record significant architecture and implementation decisions in the project's documentation.
+
+## Development Status
+
+ProjectPlan is at the foundation stage. The initial development focus is the project workspace and the database-backed structure for projects, storyboards, plans, phases, milestones, tasks, documentation, and development history.
